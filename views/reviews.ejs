@@ -21,29 +21,24 @@
             </ol>
           </div>
         <% } else { %>
-        <% msg.result.forEach(function(review){ %>
-        <div class="tile is-ancestor">
-          <div class="tile is-parent">
-              <% if(review.doc.sentiment === 'positive') {%>
-                <article class="tile is-child box notification is-primary">
-              <% } else if(review.doc.sentiment === 'negative') {%>
-                <article class="tile is-child box notification is-warning">
-              <% } else { %>
-                <article class="tile is-child box">
-              <% } %>
-              <p class="title"><%= review.doc.movie %></p>
-              <p class="subtitle">
-                <%= review.doc.firstName %> <%= review.doc.lastName %>
-              </p>
-              <div class="content">
-                <%= review.doc.review %>
-              </div>
-            </article>
-          </div>
+<% msg.result.forEach(function(review){ %>
+  <div class="tile is-ancestor">
+    <div class="tile is-parent">
+      <% if(review.doc.sentiment === 'positive') { %>
+        <article class="tile is-child box notification is-info"> <!-- Change to blue -->
+      <% } else if(review.doc.sentiment === 'negative') { %>
+        <article class="tile is-child box notification is-danger"> <!-- Change to red -->
+      <% } else { %>
+        <article class="tile is-child box">
+      <% } %>
+        <p class="title"><%= review.doc.movie %></p>
+        <p class="subtitle">
+          <%= review.doc.firstName %> <%= review.doc.lastName %>
+        </p>
+        <div class="content">
+          <%= review.doc.review %>
         </div>
-        <% })} %>
-      </div>
-    </section>
-    <%- include('footer'); %>
-  </body>
-</html>
+      </article>
+    </div>
+  </div>
+<% })} %>
